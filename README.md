@@ -1,37 +1,23 @@
-README
-====
+# Agence-voyage
 
-Legrand Thomas, Padiolleau Rémi, Voyag’INT
+## Contexte du projet
+Projet informatique en équipe dans le cadre du cursus de Télécom SudParis.
 
-Le cahier des charges a été suivi, et chaque partie est fonctionnelle.
+## But
+L'objectif de ce mini-projet est de travailler sur la création d'une application nouvelle, avec les technologies découvertes (HTML, Symfony, PHP, Twig, Doctrine, CSS, Bootstrap, autorisations, ...).
+Ce mini-projet a été conçu afin de se placer dans un contexte fictif simulant, de façon très simplifiée, le rôle d'une équipe de développement Web au sein d'un prestataire de service (SSII) en charge du développement d'une application Web de type "catalogue / vitrine en ligne" pour un client. Nous avons joué le rôle d'un binôme de développeurs Web au sein de l'équipe de la SSII.
 
-# Compte utilisateurs:
-Admin : anna_admin
-User :  Login: titi Password: titi
+## Approche
+1. Lire le cahier des charges du "client" pour avoir une vue globale du projet
+2. Prendre connaissance de la coquille vide fournie pour faciliter le commencement du projet et éviter l'aspect paramétrisation
+3. Réflexion autour du sketch de l'application web (layout et architecture des pages)
+4. Programmation de l'application web en utilisant Bootstrap, Symfony et son moteur de template Twig et en suivant un modèle MVC
 
-# Routes utilisables:
-##Front-end:
-@Route("/", name="homepage")
-@Route("/contact", name="contact")
-@Route("/circuit", name="circuit_index")
-@Route("/circuit/{id}", name="circuit_show »)
-@Route(« /login », name=« login »)
-@Route(« /profile/edit », name=« edit_profile »)
-@Route(« /logout », name=« logout »)
+## Conclusion
+Il était intéressant de se mettre dans la peau d'un développeur d'une SSII, de répondre aux besoins formulés dans le cahier des charges et de proposer une solution avec une plus grande part d'autonomie en terme de créativité par rapport aux projets habituels.
+De plus, j'ai personnellement apprécié travailler avec les technologies web et cela m'a donné envie de découvrir le Javascript par la suite. Dans ce milieu il apparaît d'autant plus nécessaire de ne pas "réinventer la roue" et d'utiliser des templates libre de droit ou des bibliothèques permettant d'accélérer le développement et rendre le site responsive.
+Compte-tenu du temps alloué (3x3h), nous étions assez satisfaits du résultat.
 
-##Back-end:
-@Route(« /register », name=« register »)
-@Route("/circuit/new", name="circuit_new")
-@Route("/circuit/{id}/edit", name="circuit_edit")
-@Route("/circuit/{id}/delete", name="circuit_delete")
-@Route("/circuit/{id}/etape/new", name="etape_new")
-@Route("/circuit/{id}/etape/{etapeid}/edit", name="etape_edit")
-@Route("/circuit/{id}/etape/{etapeid}/delete", name="etape_delete")
-@Route("/circuit/{id}/prog/new", name="prog_new")
-@Route("/circuit/{id}/prog/{progid}/edit", name="prog_edit")
-@Route("/circuit/{id}/prog/{progid}/delete", name="prog_delete")
-
-# Commentaires
-A priori tout fonctionne sous Firefox.
-Voyagez loin, voyagez bien, Voyag’INT.
-
+## Auteurs
+Thomas Legrand
+R. P.
