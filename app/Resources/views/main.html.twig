@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% block header %}
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="assets/ico/favicon.png">
+
+<title>{% block title %}Voyag'INT !{% endblock %}</title>
+
+{% block stylesheets %}
+<link href="../../../css/bootstrap.css" rel="stylesheet">
+<link href="../../../css/font-awesome.min.css" rel="stylesheet">
+<link href="../../../css/main.css" rel="stylesheet">
+{% endblock %}
+</head>
+
+<nav>
+	<!-- Fixed navbar -->
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="{{ path('homepage') }}">V<i
+					class="fa fa-circle"></i>yag'INT
+				</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="{{ path('homepage') }}">ACCUEIL</a></li>
+					<li><a href="{{ path('circuit_index') }}"><i
+							class="fa fa-plane"></i> CIRCUITS</a></li>
+					<li><a data-toggle="modal" href="{{ path('contact') }}"><i
+							class="fa fa-envelope-o"></i> CONTACT</a></li>
+					<li><a data-toggle="modal" data-target="#myModal"
+						href="#myModal"><i class="fa fa-info-circle"></i> A PROPOS</a></li>
+
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+					{% if is_granted('ROLE_ADMIN') %}
+					<li><a href="{{ path('fos_user_registration_register') }}"><span
+							class="glyphicon glyphicon-user"></span> Inscription</a></li>
+					{% endif %}
+
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
+							Mon compte <span class="caret"></span></a>
+
+						<ul class="dropdown-menu">
+							<li><a href="{{ path('fos_user_profile_show') }}"> Mon
+									compte</a></li>
+							<li><a href="{{ path('fos_user_profile_edit') }}">
+									Modifier mon compte</a></li>
+							<li><a href="{{ path('fos_user_security_logout') }}"> Me
+									déconnecter</a></li>
+						</ul></li>
+
+
+					</li>
+
+					{% else %}
+					<li><a href="{{ path('fos_user_security_login') }}"><span
+							class="glyphicon glyphicon-log-in"></span> Me connecter</a></li>
+					{% endif %}
+				</ul>
+
+
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
+
+	<div id="headerwrap">
+		<div class="container">
+			<div class="row centered">
+				<div class="col-lg-8 col-lg-offset-2">
+					<h1>
+						Le site de <b>voyage</b>
+					</h1>
+					<br>
+					<h2>qui vous vend du rêve</h2>
+				</div>
+			</div>
+			<!-- row -->
+		</div>
+		<!-- container -->
+	</div>
+	<!-- headerwrap -->
+</nav>
+{% endblock %}
+
+{% block body %}
+<body>
+	{% block main %}
+	{% endblock %}
+</body>
+{% endblock %}
+
+{% block footer %}
+<div id="r">
+	<div class="container">
+		<div class="row centered">
+			<div class="col-lg-8 col-lg-offset-2">
+				<h4>VIVEZ VOS PROPRES AVENTURES.</h4>
+				<p>Trouvez celle qui vous convient grâce à Voyag'INT.</p>
+			</div>
+		</div>
+		<!-- row -->
+	</div>
+	<!-- container -->
+</div>
+<! -- r wrap -->
+
+
+<!-- FOOTER -->
+<div id="f">
+	<div class="container">
+		<div class="row centered">
+			<a href="www.twitter.com"><i class="fa fa-twitter"></i></a><a
+				href="www.facebook.com"><i class="fa fa-facebook"></i></a><a
+				href="www.dribbble.com"><i class="fa fa-dribbble"></i></a>
+
+		</div>
+		<!-- row -->
+	</div>
+	<!-- container -->
+</div>
+<!-- Footer -->
+
+
+<!-- MODAL FOR CONTACT -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">Nous contacter</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row centered">
+					<p>Nous sommes disponibles 24/7, n'hésitez pas à nous
+						contacter.</p>
+					<p>
+						9 Rue Charles Fourier<br /> 91000 Evry, FR.<br /> +33 8948-4343<br />
+						contact@voyagint.com
+					</p>
+					<div id="mapwrap">
+						<iframe
+							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2637.235805796711!2d2.442333315107541!3d48.624469525103486!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e5e0a5bc55b7c3%3A0xe36212ea43235222!2sIncubateur+IMT+Starter!5e0!3m2!1sfr!2sfr!4v1476958060204"
+							width="400" height="300" frameborder="0" style="border: 0"
+							allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+{% endblock %}
+
+{% block javascripts %}
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script>
+	$('.dropdown-toggle').dropdown()
+</script>
+{% endblock %}
+
+</html>

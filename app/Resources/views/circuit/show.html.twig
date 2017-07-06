@@ -1,0 +1,144 @@
+{% extends 'main.html.twig' %}
+
+{% block main %}
+<div class="container w">
+	<div class="circuit">
+		<h2>
+			{{ circuit.description }}
+		</h2>
+
+		<hr>
+
+		<h3>Détails</h3>
+		<div class="circuit_details">
+
+			<p>
+				Description:
+				{{ circuit.description }}
+			</p>
+
+			<p>
+				Départ de
+				{{ circuit.villeDepart }}
+				pour
+				{{ circuit.dureeCircuit }}
+				j. de voyage à travers le
+				{{ circuit.paysDepart }}
+				, pour terminer à
+				{{ circuit.villeArrivee }}
+				.
+			</p>
+
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			<a href="{{ path('circuit_edit', {'id': circuit.id}) }}">
+				<button type="button" class="btn btn-warning">Modifier
+					circuit</button>
+			</a> <a href="{{ path('circuit_delete', {'id': circuit.id}) }}">
+				<button type="button" id="delete-btn" class="btn btn-danger"
+					onClick="ConfirmMessage()">Supprimer circuit</button>
+			</a>
+			{% endif %}
+
+			<hr>
+
+			<h3>Étapes</h3>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Numéro</th>
+						<th>Ville</th>
+						<th>Nombre jours</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for etape in circuit.etapes %}
+					<tr>
+						<td>{{ etape.numeroEtape }}</td>
+						<td>{{ etape.villeEtape }}</td>
+						<td>{{ etape.nombreJours }} j.</td>
+						{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						<td><a
+							href="{{ path('etape_edit', {'id': circuit.id, 'etapeid': etape.id}) }}">
+								<button type="button" class="btn btn-warning btn-sm">
+									Modifier étape</button>
+						</a> <a
+							href="{{ path('etape_delete', {'id': circuit.id, 'etapeid': etape.id}) }}">
+								<button type="button" class="btn btn-danger btn-sm">
+									Supprimer étape</button>
+						</a></td>
+						{% endif %}
+					</tr>
+					{% endfor %}
+					{# circuit.etapes #}
+
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+					<a href="{{ path('etape_new', {'id': circuit.id}) }}">
+						<button type="button" class="btn btn-default">Ajouter
+							étape</button>
+					</a>
+					{% endif %}
+
+				</tbody>
+			</table>
+		</div>
+		{# circuit_details #}
+
+		<hr>
+
+		<div class="programmations">
+			<h3>Programmations de ce circuit</h3>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Date de départ</th>
+						<th>Nombre de personnes</th>
+						<th>Prix</th>
+						<th></th>
+					</tr>
+				</thead>
+				{%  for programmation in circuit.programmations %}
+				<tr>
+					<td>{{ programmation.dateDepart|date('d-m-Y')  }}</td>
+					<td>{{ programmation.nombrePersonnes }}</td>
+					<td>{{ programmation.prix }} euros</td>
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+					<td><a
+						href="{{ path('prog_edit', {'id': circuit.id, 'progid': programmation.id}) }}">
+							<button type="button" class="btn btn-warning btn-sm">
+								Modifier programmation</button>
+					</a> <a
+						href="{{ path('prog_delete', {'id': circuit.id, 'progid': programmation.id}) }}">
+							<button type="button" class="btn btn-danger btn-sm">
+								Supprimer programmation</button>
+					</a></td>
+					{% endif %}
+				</tr>
+				{% endfor %}
+			</table>
+			{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+			<a href="{{ path('prog_new', {'id': circuit.id}) }}">
+				<button type="button" class="btn btn-default">Ajouter
+					programmation</button>
+			</a>
+			{% endif %}
+		
+		</div>
+		{# programmations #} <br> <br>
+		<ul>
+			<li><a href="{{ path('circuit_index') }}">Retour à la liste</a></li>
+		</ul>
+	</div>
+	{# circuit #}
+</div>
+
+<script type="text/javascript">
+	function ConfirmMessage() {
+		if (confirm("Voulez-vous supprimer le circuit ?")) {
+			window.location.href = "";
+		}
+	}
+</script>
+
+{% endblock %}
+{# main #}

@@ -1,0 +1,76 @@
+{% extends 'main.html.twig' %}
+
+{% block body %}
+<body>
+	<div class="container w">
+
+
+		<!-- Form -->
+		<form id="contact-form" action="/" method="post">
+			<h2><strong>NOUS CONTACTER</strong></h2>
+
+			<div class="row">
+				<div class="col-sm-1">
+					<h5>NOM:</h5>
+				</div>
+				<div class="col-sm-4">
+					<input placeholder="Nom" type="text" tabindex="1" required
+						autofocus>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-sm-1">
+					<h5>PRENOM:</h5>
+				</div>
+				<div class="col-sm-4">
+					<input placeholder="Prénom" type="text" tabindex="1" required
+						autofocus>
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-1">
+					<h5>EMAIL:</h5>
+				</div>
+				<div class="col-sm-4">
+					<input placeholder="Email" type="email" tabindex="2" required>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-1">
+					<h5>TELEPHONE:</h5>
+				</div>
+				<div class="col-sm-4">
+					<input placeholder="Téléphone" type="tel" tabindex="3">
+
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-1">
+					<h5>MESSAGE:</h5>
+				</div>
+				<div class="col-sm-4">
+					<textarea placeholder="Votre message" tabindex="5" required></textarea>
+				</div>
+			</div>
+			<div class="row">
+				<br>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+
+					<button name="submit" type="submit" id="contact-submit">
+						Envoyer mail</button>
+				</div>
+			</div>
+		</form>
+		<!-- /Form -->
+		<br>
+
+	</div>
+	<script src="js/scripts.js"></script>
+
+</body>
+</html>
+{% endblock %}

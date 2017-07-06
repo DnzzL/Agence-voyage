@@ -1,0 +1,48 @@
+{% extends 'main.html.twig' %}
+
+{% block body %}
+
+<body>
+	<div class="container w">
+		<h1>Nos circuits</h1>
+		<hr>
+		{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+		<a href="{{ path('circuit_new') }}">
+			<button type="button" class="btn btn-default">Nouveau circuit</button>
+		</a>
+		{% endif %}
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Description</th>
+					<th>Paysdepart</th>
+					<th>Villedepart</th>
+					<th>Villearrivee</th>
+					<th>Dureecircuit</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for circuit in circuits %}
+				<tr>
+					<td><a href="{{ path('circuit_show', { 'id': circuit.id }) }}">{{ circuit.id }}</a></td>
+					<td>{{ circuit.description }}</td>
+					<td>{{ circuit.paysDepart }}</td>
+					<td>{{ circuit.villeDepart }}</td>
+					<td>{{ circuit.villeArrivee }}</td>
+					<td>{{ circuit.dureeCircuit }}</td>
+					<td>
+						<ul>
+							<li><a
+								href="{{ path('circuit_show', { 'id': circuit.id }) }}">détails</a>
+							</li>
+						</ul>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</body>
+{% endblock %}
